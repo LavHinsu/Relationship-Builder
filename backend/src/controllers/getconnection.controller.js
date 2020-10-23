@@ -22,7 +22,6 @@ async function searchConnection(from_user, to_user) {
         visited.push(currentNode);
         path.push(currentNode);
         var connections = await getListOfConnections(currentNode);
-        console.log("Connections of "+currentNode +" "+connections)
         if (connections.includes(to_user)) {
             path.push(to_user)
             return;
@@ -37,8 +36,6 @@ async function searchConnection(from_user, to_user) {
 
 
     }
-    //console.log("final queue=" + queue)
-    //console.log("final=" + path)
     if(path.length==1){
         return []
     }
