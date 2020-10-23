@@ -4,6 +4,6 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(getreltaionshipController.getRelationship)
+  .post(getreltaionshipController.getRelationship)
 
 module.exports = router;
