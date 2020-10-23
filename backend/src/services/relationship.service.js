@@ -30,8 +30,14 @@ const getRelations = async (body) => {
   return documents
 }
 
+const updateRelationship = async (body) => {
+  var result = await Relationships.updateRelationship(body.from_user,body.to_user,body.tag)
+  return result
+}
+
 module.exports = {
   createRelationship,
   getRelations,
   checkUser,
+  updateRelationship,
 }

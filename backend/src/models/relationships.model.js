@@ -22,6 +22,14 @@ RelationshipSchema.statics.getRelationshipsofuser = async function (from_user, e
     return relations;
 };
 
+RelationshipSchema.statics.updateRelationship = async function (from_user, to_user, tag, excludeUserId) {
+    var query = { "from_user": from_user, "to_user": to_user }
+    var newdata={ "from_user": from_user, "to_user": to_user ,"tag":tag}
+    await this.findOneAndUpdate(query, newdata, function (err, doc) {
+        if (err) return false;
+        return true;
+    });
+}
 
 const Relationships = mongoose.model('Relationships', RelationshipSchema);
 
