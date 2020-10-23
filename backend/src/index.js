@@ -1,12 +1,26 @@
 import cors from "cors"
 import express from "express"
+const ApiError = require('./utils/ApiError');
+const mongoose = require('mongoose');
+const config = require('./configs/config');
+const routes = require('./routes/');
+const httpStatus = require('http-status');
+let server;
 
-const port = 8888
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
+    console.log('Connected to MongoDB');
 
+});
 const app = express()
 app.use(cors())
 app.options("*", cors())
+app.use(express.json());
+app.use(routes);
+app.use((req, res, next) => {
+    next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  });
+  
 
-app.get("/", (req, res) => res.send({ status: true }))
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+server = app.listen(config.port, () => {
+console.log(`Server Listening on ${config.port}!`)
+});

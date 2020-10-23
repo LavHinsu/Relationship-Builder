@@ -1,5 +1,5 @@
 {
-  "name": "vanhackathon-chsilva",
+  "name": "relationship-builder",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -11,8 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-status": "^1.4.2",
+    "joi": "^17.2.1",
+    "mongoose": "^5.10.9",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
