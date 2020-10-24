@@ -13,7 +13,7 @@ services:
     ports:
       - "8000:8000" 
     volumes:
-      - ./backend:/usr/src/backendapp
+      - /usr/src/backendapp
     depends_on:
       - mongodb
   frontend:
@@ -23,6 +23,6 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     volumes:
-      - ./frontend:/usr/src/frontendapp
+      - /usr/src/frontendapp
     depends_on:
       - backend
