@@ -5,7 +5,7 @@ const { relationshipService } = require('../services');
 
 const getRelationship = catchAsync(async (req, res) => {
   const relationships = await relationshipService.getRelations(req.body);
-  res.status(httpStatus.FOUND).send(relationships);
+  res.status(httpStatus.OK).send(relationships);
 });
 
 module.exports = {
