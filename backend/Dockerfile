@@ -1,6 +1,7 @@
 FROM node:latest
 RUN mkdir -p /usr/src/backendapp
 WORKDIR /usr/src/backendapp
+
 COPY package*.json ./
 RUN npm install
 
