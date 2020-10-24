@@ -12,6 +12,8 @@ const getConnection = catchAsync(async (req, res) => {
     res.status(httpStatus.OK).send(result);
 });
 
+
+// this is a simple dfs 
 async function searchConnection(from_user, to_user) {
     var path = []
     var visited = []
@@ -33,8 +35,6 @@ async function searchConnection(from_user, to_user) {
                 }
             }
         }
-
-
     }
     if(path.length==1){
         return []

@@ -4,6 +4,6 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(getConnection.getConnection)
+  .post(getConnection.getConnection)
 
 module.exports = router;

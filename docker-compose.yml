@@ -14,7 +14,7 @@ services:
     depends_on:
       - mongodb
   frontend:
-    build: ./frontend/
+    build: ./frontend/relationship-builder
     ports:
       - "3000:3000"
     environment:
