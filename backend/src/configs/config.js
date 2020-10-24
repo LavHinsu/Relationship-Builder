@@ -6,7 +6,7 @@ dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 const envVarsSchema = Joi.object()
     .keys({
-        PORT: Joi.number().default(3000),
+        PORT: Joi.number().default(8000),
         MONGODB_URL: Joi.string().required().description('Mongo DB url'),
     })
     .unknown();

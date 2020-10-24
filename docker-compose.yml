@@ -8,13 +8,13 @@ services:
     build: ./backend/
     restart: always
     ports:
-      - "8888:8888"
+      - "8000:8000"
     volumes:
       - ./backend:/usr/src/backendapp
     depends_on:
       - mongodb
   frontend:
-    build: ./frontend/relationship-builder
+    build: ./frontend/relationship
     ports:
       - "3000:3000"
     environment:

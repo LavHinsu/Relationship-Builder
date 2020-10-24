@@ -21,7 +21,7 @@ function App() {
   const [findFrom, setFindFrom] = useState()
   const [findTo, setFindTo] = useState()
 
-  const [connection, setConnection] = useState()
+  const [connection, setConnection] = useState('Add users and relationships, then search')
 
   useEffect(() => {
 
@@ -107,7 +107,8 @@ function App() {
                   "name": addUser
                 }
                 axios.post(url, body)
-                  .then(fetchUsers())
+                  .then(async () => await fetchUsers())
+                  .then(alert("sucessfull"))
                   .catch((err) => { console.log(err) })
               }}>
               Add User</button>
@@ -140,8 +141,8 @@ function App() {
                 "tag": addTag
               }
               axios.post(url, body)
+                .then(async () => {await fetchRelationships(users)})
                 .then(alert("sucessfull"))
-                .then(fetchRelationships(users))
                 .catch((err) => { console.log(err) })
             }}>Add Relation</button>
           </div>
@@ -170,7 +171,8 @@ function App() {
               }
               console.log(body)
               axios.post(url, body)
-                .then(fetchRelationships(users))
+                .then(async () =>{await fetchRelationships(users)})
+                .then(alert("sucessfull"))
                 .catch((err) => { console.log(err) })
 
 
@@ -205,13 +207,19 @@ function App() {
               }
               axios.post(url, body)
                 .then((res) => {
-                  var series = "" + res.data[0]
-                  for (var i = 1; i < res.data.length; i++) {
-                    series += " >> " + res.data[i]
+                  if (res.data.length === 0) {
+                    setConnection("No Connection Found")
                   }
-                  setConnection(series)
+                  else {
+                    var series = "" + res.data[0]
+                    for (var i = 1; i < res.data.length; i++) {
+                      series += " >> " + res.data[i]
+                    }
+                    setConnection(series)
+                  }
                 }
                 )
+
                 .catch((err) => { console.log(err) })
             }}>Find Chain</button>
           </div>
