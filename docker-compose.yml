@@ -7,8 +7,11 @@ services:
   backend:
     build: ./backend/
     restart: always
+    environment:
+      - PORT=8000
+      - MONGODB_URL=mongodb://127.0.0.1:27017/relationship-builder
     ports:
-      - "8000:8000"
+      - "8000:8000" 
     volumes:
       - ./backend:/usr/src/backendapp
     depends_on:
