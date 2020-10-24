@@ -12,6 +12,7 @@ const app = express()
 
 app.use(cors());
 app.options('*', cors());
+
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
     console.log('Connected to MongoDB');
 
