@@ -7,14 +7,21 @@ const routes = require('./routes/');
 const httpStatus = require('http-status');
 let server;
 
+
+const app = express()
+
+app.use(cors());
+app.options('*', cors());
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
     console.log('Connected to MongoDB');
 
 });
-const app = express()
-app.use(cors())
-app.options("*", cors())
+
+
+
 app.use(express.json());
+
+
 app.use(routes);
 app.use((req, res, next) => {
     next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
