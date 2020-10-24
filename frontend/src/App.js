@@ -44,7 +44,10 @@ function App() {
   async function fetchUsers() {
     // You can await here
     setDataloading(true)
-    const response = await axios.get('http://localhost:8000/getusers')
+    const response = await axios.get('http://localhost:8000/getusers/',
+    {headers: {
+      'Access-Control-Allow-Origin': '*',
+    }})
       .then(async (res) => await res.data)
       .catch(async (err) => { await console.log(err.message) })
     setUsers(response)
